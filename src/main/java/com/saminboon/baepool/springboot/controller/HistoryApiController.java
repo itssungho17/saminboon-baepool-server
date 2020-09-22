@@ -1,10 +1,10 @@
-package com.saminboon.baepool.springboot.web;
+package com.saminboon.baepool.springboot.controller;
 
 import com.saminboon.baepool.springboot.service.HistoryService;
-import com.saminboon.baepool.springboot.web.dto.history.HistoryListResponseDto;
-import com.saminboon.baepool.springboot.web.dto.history.HistoryResponseDto;
-import com.saminboon.baepool.springboot.web.dto.history.HistorySaveRequestDto;
-import com.saminboon.baepool.springboot.web.dto.history.HistoryUpdateRequestDto;
+import com.saminboon.baepool.springboot.dto.history.HistoryListResponseDto;
+import com.saminboon.baepool.springboot.dto.history.HistoryResponseDto;
+import com.saminboon.baepool.springboot.dto.history.HistorySaveRequestDto;
+import com.saminboon.baepool.springboot.dto.history.HistoryUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.saminboon.baepool.springboot.web.dto.history;
+package com.saminboon.baepool.springboot.dto.history;
 
 import com.saminboon.baepool.springboot.domain.food.FoodName;
 import com.saminboon.baepool.springboot.domain.history.History;

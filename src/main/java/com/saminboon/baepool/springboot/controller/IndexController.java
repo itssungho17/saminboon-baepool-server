@@ -1,9 +1,9 @@
-package com.saminboon.baepool.springboot.web;
+package com.saminboon.baepool.springboot.controller;
 
 import com.saminboon.baepool.springboot.config.auth.LoginUser;
 import com.saminboon.baepool.springboot.config.auth.dto.SessionUser;
 import com.saminboon.baepool.springboot.service.HistoryService;
-import com.saminboon.baepool.springboot.web.dto.history.HistoryResponseDto;
+import com.saminboon.baepool.springboot.dto.history.HistoryResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

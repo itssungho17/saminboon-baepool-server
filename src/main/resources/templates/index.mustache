@@ -1,0 +1,49 @@
+{{>layout/header}}
+
+<h1>Saminboon Baepool Server API</h1>
+<div class="col-md-12">
+    <div class="row">
+        <div class="col-md-6">
+            {{#userName}}
+                Logged in as: <span id="user">{{userName}}</span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            {{/userName}}
+            {{^userName}}
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+            {{/userName}}
+            <a href="/history" role="button" class="btn btn-primary">홈</a>
+            <a href="/search" role="button" class="btn btn-primary">검색</a>
+            <a href="/my_history" role="button" class="btn btn-primary">뭐먹지</a>
+            <a href="/my_page" role="button" class="btn btn-primary">마이페이지</a>
+            <a href="/history/save" role="button" class="btn btn-primary">등록</a>
+        </div>
+    </div>
+    <br>
+
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th>id</th>
+            <th>Food</th>
+            <th>Restaurant</th>
+            <th>Rating</th>
+            <th>Access scope</th>
+            <th>Modified date</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#history}}
+            <tr>
+                <td>{{id}}</td>
+                <td><a href="/history/update/{{id}}">{{food}}</a></td>
+                <td>{{restaurant}}</td>
+                <td>{{rating}}</td>
+                <td>{{access}}</td>
+                <td>{{modifiedDate}}</td>
+            </tr>
+        {{/history}}
+        </tbody>
+    </table>
+</div>
+
+{{>layout/footer}}

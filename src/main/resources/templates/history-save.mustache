@@ -1,0 +1,30 @@
+{{>layout/header}}
+
+<h1>'오늘은 뭘 먹었지?' 등록</h1>
+
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="food">음식</label>
+                <input type="number" class="form-control" id="food" placeholder="음식명을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="restaurant">식당</label>
+                <input type="number" class="form-control" id="restaurant" placeholder="식당명을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="rating">평점</label>
+                <input type="number" class="form-control" id="rating" placeholder="평점을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="access">공개 범위</label>
+                <input type="number" class="form-control" id="access" placeholder="공개 범위를 입력하세요">
+            </div>
+        </form>
+        <a href="/" role="button" class="btn btn-secondary">취소</a>
+        <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+    </div>
+</div>
+
+{{>layout/footer}}

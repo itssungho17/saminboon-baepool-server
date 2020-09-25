@@ -15,6 +15,9 @@ cache:
 # Start build when push to master
 script: './gradlew clean build'
 
+before_install:
+  - chmod +x gradlew
+
 # Notification when build completed
 notifications:
   email:

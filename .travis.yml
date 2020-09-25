@@ -1,0 +1,22 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+# Travis CI Home cache setting
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+# Start build when push to master
+script: './gradlew clean build'
+
+# Notification when build completed
+notifications:
+  email:
+    recipients:
+      - itssungho17@gmail.com

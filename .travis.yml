@@ -34,6 +34,17 @@ deploy:
     local_dir: deploy
     wait-until-deployed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: saminboon-baebool-file-server
+    key: saminboon-baepool-server.zip
+    bundle_type: zip
+    application: saminboon-baepool-server
+    deployment_group: saminboon-baepool-server-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 # Notification when build completed
 notifications:
   email:

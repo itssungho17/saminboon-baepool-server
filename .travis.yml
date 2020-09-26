@@ -18,6 +18,22 @@ script: './gradlew clean build'
 before_install:
   - chmod +x gradlew
 
+before_deploy:
+  - zip -r saminboon-baepool-server *
+  - mkdir -p deploy
+  - mv saminboon-baepool-server.zip deploy/saminboon-baepool-server.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: saminboon-baebool-file-server
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+
 # Notification when build completed
 notifications:
   email:

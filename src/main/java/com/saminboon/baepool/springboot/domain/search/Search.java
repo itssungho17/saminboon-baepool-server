@@ -1,34 +1,32 @@
 package com.saminboon.baepool.springboot.domain.search;
 
-import com.saminboon.baepool.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @Entity
-public class Search extends BaseTimeEntity {
+public class Search {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
-    private Long user;
+    @CreatedDate
+    private LocalDateTime createdDate;
 
     @Column(nullable = false)
-    private String word;
+    private String text;
 
     @Builder
-    public Search(Long user, String word) {
-        this.user = user;
-        this.word = word;
-    }
-
-    public void update(Long user, String word) {
-        this.user = user;
-        this.word = word;
+    public Search(Long id, String text) {
+        this.id = id;
+        this.text = text;
     }
 }

@@ -1,0 +1,56 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+# Travis CI Home cache setting
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+# Start build when push to master
+script: './gradlew clean build'
+
+before_install:
+  - chmod +x gradlew
+
+before_deploy:
+  - mkdir -p before-deploy
+  - cp scripts/*.sh before-deploy/
+  - cp appspec.yml before-deploy/
+  - cp build/libs/*.jar before-deploy/
+  - cd before-deploy && zip -r before-deploy *
+  - cd ../ && mkdir -p deploy
+  - mv before-deploy/before-deploy.zip deploy/saminboon-baepool-server.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: saminboon-baebool-file-server
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: saminboon-baebool-file-server
+    key: saminboon-baepool-server.zip
+    bundle_type: zip
+    application: saminboon-baepool-server
+    deployment_group: saminboon-baepool-server-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+
+# Notification when build completed
+notifications:
+  email:
+    recipients:
+      - itssungho17@gmail.com
